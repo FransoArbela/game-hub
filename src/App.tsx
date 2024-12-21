@@ -1,4 +1,4 @@
-import { Grid, GridItem, Show } from "@chakra-ui/react";
+import { Grid, GridItem, useBreakpointValue } from "@chakra-ui/react";
 function App() {
   return (
     <>
@@ -8,11 +8,11 @@ function App() {
       }}>
         <GridItem area="nav" bg="purple">Nav</GridItem>
 
-        <Show above="lg">
-        <GridItem area="aside" bg="green">Aside</GridItem>
-        </Show>
+        {useBreakpointValue({ base: false, lg: true }) && (
+          <GridItem area="aside" bg="green">Aside</GridItem>
+        )}
         
-        <GridItem area="main" bg="dodgerblue">Nav</GridItem>
+        <GridItem area="main" bg="dodgerblue">Main</GridItem>
       </Grid>
     </>
   );
